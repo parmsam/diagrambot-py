@@ -6,16 +6,16 @@ build-backend = "setuptools.build_meta"
 name = "diagrambot"
 version = "0.1.0"
 description = """
-Create mermaid and graphviz diagrams using Shinyrealtime and the OpenAI Realtime 
-API. This package provides a Shiny for Python interface for generating various 
-types of diagrams through voice commands.
+Create Mermaid and Graphviz diagrams using AI through voice commands (GPT-4o Realtime API) 
+or text chat. This package provides interactive Shiny for Python interfaces for generating 
+various types of diagrams including flowcharts, sequence diagrams, network graphs, and more.
 """
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Sam Parmar"}
 ]
-keywords = ["shiny", "python", "diagrams", "visualization", "interactive"]
+keywords = ["shiny", "python", "diagrams", "mermaid", "graphviz", "visualization", "interactive", "ai", "openai"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -30,15 +30,11 @@ classifiers = [
 requires-python = ">=3.8"
 dependencies = [
     "shiny>=0.6.0",
-    "plotly>=5.0.0",
-    "networkx>=2.8.0",
-    "pandas>=1.3.0",
-    "matplotlib",
-    "plotnine",
-    "seaborn",
-    "shinychat",
     "python-dotenv",
+    "shinychat",
+    "chatlas",
     "shinyrealtime",
+    "faicons",
 ]
 
 [project.urls]

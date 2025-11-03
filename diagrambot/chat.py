@@ -241,7 +241,7 @@ def diagrambot_chat(
                     print(f"Error in periodic usage tracking: {e}")
         
         # Handle copy to clipboard button
-        @reactive.Effect
+        @reactive.effect
         @reactive.event(input.copy_code)
         async def _copy_code():
             print("=== COPY CODE BUTTON CLICKED (PYTHON SIDE) ===")

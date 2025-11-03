@@ -279,7 +279,6 @@ def diagrambot_voice(
         ui.sidebar(
             ui.help_text("Session cost:", ui.output_text("session_cost", inline=True)),
             shinychat.output_markdown_stream("response_text"),
-            title="Transcript",
         ),
         # Settings button in top right corner
         ui.div(

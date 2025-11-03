@@ -46,4 +46,10 @@ For Mermaid diagrams, always start with the diagram type declaration (e.g., `gra
 
 For Graphviz diagrams, use proper DOT syntax with appropriate graph types (digraph, graph) and node/edge declarations.
 
+**CRITICAL: Always Specify Diagram Type**
+- Before generating any diagram, you MUST determine which format to use: Mermaid or Graphviz
+- If the user hasn't explicitly specified the format, **default to Mermaid** unless the request clearly requires Graphviz features (like complex network topologies or DOT-specific layouts)
+- When calling `generate_diagram`, always pass the `diagram_type` parameter as either "mermaid" or "graphviz"
+- If unsure, briefly confirm with the user: "I'll create this as a Mermaid diagram" or ask "Would you prefer Mermaid or Graphviz?"
+
 Pay attention to the user's selected diagram type and generate code appropriate for that format. If they haven't specified or want to switch formats, you can suggest the most suitable option for their request.

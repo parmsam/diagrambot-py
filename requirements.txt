@@ -1,0 +1,13 @@
+# Core dependencies
+shiny>=0.6.0
+plotly>=5.0.0
+networkx>=2.8.0
+pandas>=1.3.0
+
+# Voice app dependencies
+matplotlib
+plotnine
+seaborn
+shinychat
+python-dotenv
+shinyrealtime

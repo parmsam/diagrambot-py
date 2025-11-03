@@ -7,5 +7,6 @@ shinychat
 chatlas
 
 # Voice interface dependencies
-shinyrealtime
+# shinyrealtime is only available from GitHub
+git+https://github.com/posit-dev/shinyrealtime.git
 faicons

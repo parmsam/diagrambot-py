@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from faicons import icon_svg
 from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
 from shinyrealtime import realtime_server, realtime_ui
-
+import urllib.parse
 
 from .utils import ensure_openai_api_key, build_prompt
 
@@ -144,8 +144,34 @@ def generate_external_links_content(code: str, diagram_type: str) -> ui.TagList:
         encoded_code = create_kroki_encoding(code)
         kroki_svg_url = f"https://kroki.io/graphviz/svg/{encoded_code}"
         kroki_png_url = f"https://kroki.io/graphviz/png/{encoded_code}"
+        
+        # Create Graphviz Online link using URL encoding
+        graphviz_online_encoded = urllib.parse.quote(code)
+        graphviz_online_url = f"https://dreampuf.github.io/GraphvizOnline/#{graphviz_online_encoded}"
 
         return ui.TagList(
+            ui.div(
+                {"class": "mb-3"},
+                ui.h6("✏️ Graphviz Online"),
+                ui.p(
+                    {"class": "small text-muted"},
+                    "Interactive editor for viewing and editing your diagram"
+                ),
+                ui.HTML(f'''
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control font-monospace small" 
+                               value="{graphviz_online_url}" readonly onclick="this.select()">
+                        <button class="btn btn-outline-secondary" type="button"
+                                onclick="navigator.clipboard.writeText('{graphviz_online_url}')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <button class="btn btn-primary" type="button"
+                                onclick="window.open('{graphviz_online_url}', '_blank')">
+                            <i class="fas fa-external-link"></i> Open
+                        </button>
+                    </div>
+                ''')
+            ),
             ui.div(
                 {"class": "mb-3"},
                 ui.h6("📊 Kroki (SVG)"),
